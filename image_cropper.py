@@ -10,10 +10,14 @@ from PIL import Image
 image_size = (512,512) 
 
 out_dir = sys.argv[1]
+total = len(sys.argv) - 2
+i = 0
 for in_path in sys.argv[2:]:
+    i +=1
     out_path = os.path.join(out_dir, os.path.split(in_path)[-1])
     im = Image.open(in_path)
-    print(f"{in_path}:{im.size} -> {out_path}:{image_size}")
+    sys.stdout.write(f"\r{in_path}:{im.size} -> {out_path}:{image_size} {i}/{total}")
+    sys.stdout.flush()
     w, h = im.size
     min_dim = min(w,h)
     left = w/2 - min_dim/2
