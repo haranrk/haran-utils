@@ -1,4 +1,6 @@
-[![PyPI version](https://badge.fury.io/py/haran-utils.svg)](https://badge.fury.io/py/haran-utils)
+[![PyPI version](https://badge.fury.io/py/haran-utils.svg)](https://badge.fury.io/py/haran-utils) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+
 # Utils
 A collection of utility functions and scripts I use.  
 
