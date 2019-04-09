@@ -3,6 +3,7 @@ from PIL import Image
 
 def summarise(args):
     print(f"Summary of images")
+    print(f"{'-'*10}")
     dir = args.dir
     depth = args.depth
     for root,dirs,files in os.walk(dir):
@@ -26,6 +27,12 @@ def summarise(args):
             pass
         else:
             print(root)
-            print(shapes)
+            # print(shapes)
+            print_shape_dict(shapes)
+            print(f"Total: {sum(shapes.values())}")
             print(f"{'-'*10}")
-    
+
+def print_shape_dict(shapes):
+    for k,v in shapes.items():
+        print(f"{k}: {v}", end='\n')
+    # print()

@@ -19,10 +19,10 @@ resl_parser.add_argument('dir', type=str)
 resl_parser.add_argument('--depth', default=1, type=int)
 resl_parser.set_defaults(func=summarise)
 
-crop_parser = sub_parsers.add_parser('crop', help="Resize and crops images")
-crop_parser.add_argument('in_dir', type=str, help="Directory containing images to be cropped")
+crop_parser = sub_parsers.add_parser('crop', help="Resize and crops images to the given resolution")
+crop_parser.add_argument('in_dir', type=str, help="Directory containing images to be modified")
 crop_parser.add_argument('out_dir', type=str, help="Directory to which the output images will be saved")
-crop_parser.add_argument('--dim', default='256,256', type=str)
+crop_parser.add_argument('dim', type=str, help="Dimensions to which to crop images. Format - 'lenght,width'")
 crop_parser.set_defaults(func=crop)
 
 filter_parser = sub_parsers.add_parser('filter', help="Moves images greater than the specified resolution to output directory")
