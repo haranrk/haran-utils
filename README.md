@@ -14,5 +14,7 @@ You can use the `-h` arg to get help on the specific command
 1. `crop` - Crops images given in one folder and outputs to the target folder
 2. `filter` - 
 Checks the resolution of all the files in the specified directory and moves them to the target directory if they are of a larger resolution
-1. `summarise` - Checks the resolutions of images in all the sub-directories of the given directory and tells how many of images of a given resolution are there in a sub-directory
+1. `summarise` - Checks the resolutions of images in all the sub-directories of the given directory and tells how many of images of a given resolution are there in a sub-directory. The image below is an output from the command.
+
+![summarise-sample](assets/summarise-example.png)
 
