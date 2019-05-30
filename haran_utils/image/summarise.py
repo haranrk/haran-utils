@@ -3,12 +3,13 @@ from PIL import Image
 
 def summarise(args):
     print(f"Summary of images")
-    print(f"{'-'*10}")
+    separator_string = f"\033[1;36;40m{'-'*10} "
+    print(separator_string)
     dir = args.dir
     depth = args.depth
     for root,dirs,files in os.walk(dir):
-        if len(root.split(os.sep)) > 1+depth:
-            break
+        if root.count(os.path.sep) >= depth:
+            del dirs[:]
         shapes = {}
         for item in files:
             item_path = os.path.join(root,item)
@@ -26,13 +27,13 @@ def summarise(args):
             #print("No images found")
             pass
         else:
-            print(root)
+            print("\033[0;30;42m"+root+"\033[0;33;40m")
             # print(shapes)
             print_shape_dict(shapes)
-            print(f"Total: {sum(shapes.values())}")
-            print(f"{'-'*10}")
+            print(f"\033[1;31;40mTotal: \033[00m {sum(shapes.values())}")
+            print(separator_string)
 
 def print_shape_dict(shapes):
     for k,v in shapes.items():
-        print(f"{k}: {v}", end='\n')
+        print(f"\033[0;33;40m {k}: \033[00m {v}", end='\n')
     # print()
