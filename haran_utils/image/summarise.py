@@ -3,12 +3,14 @@ from PIL import Image
 
 def summarise(args):
     print(f"Summary of images")
-    separator_string = f"\033[1;36;40m{'-'*10} "
+    if args.no_color:
+        separator_string = f"{'-'*20} "
+    else:
+        separator_string = f"\033[1;36;40m{'-'*20} "
     print(separator_string)
-    dir = args.dir
-    depth = args.depth
-    for root,dirs,files in os.walk(dir):
-        if root.count(os.path.sep) >= depth:
+
+    for root,dirs,files in os.walk(args.dir):
+        if root.count(os.path.sep) >= args.depth:
             del dirs[:]
         shapes = {}
         for item in files:
@@ -27,13 +29,20 @@ def summarise(args):
             #print("No images found")
             pass
         else:
-            print("\033[0;30;42m"+root+"\033[0;33;40m")
-            # print(shapes)
-            print_shape_dict(shapes)
-            print(f"\033[1;31;40mTotal: \033[00m {sum(shapes.values())}")
+            if args.no_color:
+                print(root)
+                print_shape_dict(shapes)
+                print(f" Total:\t\t{sum(shapes.values())}")
+            else:
+                print("\033[0;30;42m"+root+"\033[0;33;40m")
+                print_shape_dict_color(shapes)
+                print(f" \033[1;31;40mTotal:\t\t\033[00m {sum(shapes.values())}")
             print(separator_string)
+
+def print_shape_dict_color(shapes):
+    for k,v in shapes.items():
+        print(f"\033[0;33;40m {k}:\t\033[00m {v}", end='\n')
 
 def print_shape_dict(shapes):
     for k,v in shapes.items():
-        print(f"\033[0;33;40m {k}: \033[00m {v}", end='\n')
-    # print()
+        print(f"{k}:\t{v}", end='\n')
