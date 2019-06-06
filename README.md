@@ -1,8 +1,14 @@
 [![PyPI version](https://badge.fury.io/py/haran-utils.svg)](https://badge.fury.io/py/haran-utils) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-
 # Utils
 A collection of utility functions and scripts I use.  
+
+## Installation 
+The package is uploaded on PyPi, therefore it can be installed via
+```bash
+pip install haran-utils
+```
+I've tested the package only on python3.6+. It may or may not work with older versions.
 
 ## Image scripts
 These are a set of cli scripts related to image housekeeping. The syntax is - 
